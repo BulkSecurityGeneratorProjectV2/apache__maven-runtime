@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Files;
 
 import junit.framework.TestCase;
 
@@ -83,7 +84,7 @@ public class MavenRuntimeVisitorUtilsTest extends TestCase
 
     private URL createTempFile( String prefix, String suffix ) throws IOException
     {
-        File file = File.createTempFile( prefix, suffix );
+        File file = Files.createTempFile( prefix, suffix ).toFile();
         file.deleteOnExit();
 
         return file.toURI().toURL();
